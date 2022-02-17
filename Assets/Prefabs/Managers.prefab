@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4471449213911876646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4471449213911876645}
+  - component: {fileID: 6592189107952471110}
+  - component: {fileID: 1662413853509307735}
+  - component: {fileID: 3644197031799809292}
+  - component: {fileID: 343662570258328691}
+  - component: {fileID: 5377673601079055480}
+  - component: {fileID: 5029695447436576354}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4471449213911876645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4471449213911876646}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.524776, y: -0.056168735, z: -0.43099084}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6592189107952471110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4471449213911876646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a95407484000f614a8c35a12e01ff05d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1662413853509307735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4471449213911876646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ee6bf8ae462e1f4fa733919517affd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyLinePrefab: {fileID: 4769820066518559074, guid: eff529074bfcea34798581915051e40d,
+    type: 3}
+  _enemysLines: []
+--- !u!114 &3644197031799809292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4471449213911876646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff004b0ef53efe343a65908f67a66aa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSprites:
+  - {fileID: -7467413282938096052, guid: 74547a59e8730cb45ad9b44e5188707e, type: 3}
+  - {fileID: -1598685635086416073, guid: 74547a59e8730cb45ad9b44e5188707e, type: 3}
+  - {fileID: -8889566870884673856, guid: 74547a59e8730cb45ad9b44e5188707e, type: 3}
+  - {fileID: 396259056645360257, guid: 74547a59e8730cb45ad9b44e5188707e, type: 3}
+  - {fileID: -6437992265152185607, guid: 74547a59e8730cb45ad9b44e5188707e, type: 3}
+  - {fileID: -5513350640364851514, guid: 74547a59e8730cb45ad9b44e5188707e, type: 3}
+--- !u!114 &343662570258328691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4471449213911876646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e0df68230b81e344b066aa382e4b9ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5377673601079055480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4471449213911876646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1e3900a4eb6f144a0d560906097f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5029695447436576354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4471449213911876646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8046fcd1e87d7f428f418abc0e07e85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
