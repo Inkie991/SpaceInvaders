@@ -9,13 +9,16 @@ public class EnemyManager : MonoBehaviour, IGameManager
     
     public ManagerStatus Status { get; private set; }
     
+    private const float movementPadding = 0.1f;
     private const float enemyLineOffsetY = 0.4f;
     private const float enemyLineOffsetX = 0.25f;
     private readonly Vector3 enemyLineSpawnPoint = new Vector3(0, 3.7f, 0);
     [SerializeField] private bool gameStarted = false;
     [SerializeField] private int moveDirection = 1;
     [SerializeField] private int movesToStartCount = 0;
-    
+
+    private float leftBorder;
+    private float rightBorder;
 
     // Initialize the list
     public void Startup()
@@ -50,6 +53,9 @@ public class EnemyManager : MonoBehaviour, IGameManager
 
         StartCoroutine(LinesMoving());
         gameStarted = true;
+        float lineWidth = enemiesLines[0].transform.GetChild(0).gameObject.GetComponent<BoxCollider2D>().bounds.size.x * 6;
+        leftBorder = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x + lineWidth / 2 + movementPadding;
+        rightBorder = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x - lineWidth / 2 - movementPadding;
     }
 
     // Spawn a line of enemies
@@ -77,19 +83,19 @@ public class EnemyManager : MonoBehaviour, IGameManager
     {
         if (gameStarted)
         {
-            if (enemiesLines[0].transform.position.x < -1.2)  
-            {
-                moveDirection = -1;
-            } else if (enemiesLines[0].transform.position.x > 1.2)
-            {
-                moveDirection = 1;
-            }
-            
             if (enemiesLines[0].transform.childCount == 0 && enemiesLines.Count > 1)
             {
                 Destroy(enemiesLines[0]);
                 enemiesLines.RemoveAt(0);
             }
+            if (enemiesLines[0].transform.position.x < leftBorder)  
+            {
+                moveDirection = -1;
+            } else if (enemiesLines[0].transform.position.x > rightBorder)
+            {
+                moveDirection = 1;
+            }
+            
         }
     }
 

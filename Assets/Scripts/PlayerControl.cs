@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+    private const float movementPadding = 0.1f;
+    
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float speed = 10f;
     [SerializeField] private int healthPoint = 5;
@@ -11,17 +13,31 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private bool isUnbreakable = false;
     private SpriteRenderer playerSprite;
 
+    private float leftBorder;
+    private float rightBorder;
+
     // Set health and start coroutine
     private void Start()
     {
         playerSprite = GetComponent<SpriteRenderer>();
         Managers.UI.ChangeHealth(healthPoint);
         StartCoroutine(InfiniteLoop());
+        leftBorder = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x + playerSprite.bounds.size.x / 2 + movementPadding;
+        rightBorder = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x - playerSprite.bounds.size.x / 2 - movementPadding;
     }
     
     // Check touches and health
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            MoveLeft();
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            MoveRight();
+        }
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -48,16 +64,17 @@ public class PlayerControl : MonoBehaviour
     // Move to the left
     private void MoveLeft()
     {
-        if (transform.position.x > -2.6f)
+        if (transform.position.x > leftBorder)
         {
             transform.Translate(Vector2.left * (speed * Time.deltaTime));
         }
     }
+    
 
     // Move to the right
     private void MoveRight()
     {
-        if (transform.position.x < 2.6f)
+        if (transform.position.x < rightBorder)
         {
             transform.Translate(Vector2.right * (speed * Time.deltaTime));
         }
