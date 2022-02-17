@@ -9,12 +9,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private GameObject enemyBulletPrefab;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // Do shot at random time
     public void TryShoot()
     {
         float chance = Random.Range(0,1f);
@@ -26,6 +21,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    // Call death, destroy bullet and increase the score
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Bullet"))
@@ -36,6 +32,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    // Play death sound and destroy this game object
     private void Death()
     {
         Managers.Audio.DeathSound();

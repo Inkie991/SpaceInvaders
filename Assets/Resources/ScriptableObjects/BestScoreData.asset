@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0964ea39a467e2f478e171f052d481f4, type: 3}
   m_Name: BestScoreData
   m_EditorClassIdentifier: 
-  bestScore: 0
+  bestScore: 27

@@ -15,6 +15,8 @@ public class Managers : MonoBehaviour
     public static GameProcessManager GameProcess { get; private set; }
 
     private List<IGameManager> _startSequence;
+    
+    // Add all managers to the list
     void Awake()
     {
         Enemy = GetComponent<EnemyManager>();
@@ -34,6 +36,7 @@ public class Managers : MonoBehaviour
         StartCoroutine(StartupManagers());
     }
 
+    // Startup all managers
     private IEnumerator<Object> StartupManagers()
     {
         foreach (IGameManager manager in _startSequence)
@@ -61,6 +64,7 @@ public class Managers : MonoBehaviour
 
             if (numReady > lastReady)
                 Debug.Log("Progress: " + numReady + "/" + numModules);
+            
             yield return null;
         }
 

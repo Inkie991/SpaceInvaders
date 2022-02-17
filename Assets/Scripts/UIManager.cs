@@ -7,24 +7,20 @@ using System;
 
 public class UIManager : MonoBehaviour, IGameManager
 {
+    [SerializeField] private List<Sprite> healthSprites;
     public ManagerStatus Status { get; private set; }
     private Image healthBar;
     private Text scoreBar;
     private GameObject endGamePopup;
-    [SerializeField] private List<Sprite> healthSprites;
-    
 
+    // Set status 'started'
     public void Startup()
     {
         Debug.Log("UI manager starting...");
         Status = ManagerStatus.Started;
     }
 
-    public void OnExit()
-    {
-        Managers.Scene.ExitFromApp();
-    }
-
+    // Show popup and stop the game, update best score
     public void PlayerLose()
     {
         endGamePopup.SetActive(true);
@@ -33,20 +29,24 @@ public class UIManager : MonoBehaviour, IGameManager
         Managers.Scene.StopGame();
     }
 
+    // Update the score on UI
     public void UpdateScore()
     {
         scoreBar.text = Managers.GameProcess.score.ToString();
     }
 
+    // Update best score if needed
     private void UpdateBestScore()
     {
         BestScore _bestScore = Resources.Load<BestScore>("ScriptableObjects/BestScoreData");
+        
         if (Managers.GameProcess.score > _bestScore.bestScore)
         {
             _bestScore.bestScore = Managers.GameProcess.score;
         }
     }
 
+    // Update health bar
     public void ChangeHealth(int health)
     {
         switch (health)
@@ -84,6 +84,7 @@ public class UIManager : MonoBehaviour, IGameManager
         }
     }
 
+    // Find UI elements by tags
     public void FindUIElementsInGame(Scene scene, LoadSceneMode mode)
     {
         if (scene.buildIndex == 3)
@@ -94,5 +95,4 @@ public class UIManager : MonoBehaviour, IGameManager
             scoreBar = GameObject.FindGameObjectWithTag("Score Bar").GetComponent<Text>();
         }
     }
-
 }

@@ -8,6 +8,7 @@ public class SpriteSwitcher : MonoBehaviour
     [SerializeField] private Sprite _buttonOn;
     [SerializeField] private Sprite _buttonOff;
 
+    // Switch sprite on click
     public void SwitchButtonSprite()
     {
         Image image = gameObject.GetComponent<Image>();

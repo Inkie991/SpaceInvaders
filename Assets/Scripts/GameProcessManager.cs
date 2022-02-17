@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class GameProcessManager : MonoBehaviour, IGameManager
 {
-    public ManagerStatus Status { get; private set; }
     [SerializeField] private BestScore bestScoreObject;
+    public ManagerStatus Status { get; private set; }
     public int score;
 
+    // Init score
     public void Startup()
     {
         Debug.Log("Game process manager starting...");
@@ -15,24 +16,16 @@ public class GameProcessManager : MonoBehaviour, IGameManager
         Status = ManagerStatus.Started;
     }
 
+    // Increase the scoe and update UI
     public void ChangeScore()
     {
         score++;
         Managers.UI.UpdateScore();
     }
-
+    
+    // Call PlayerLose method
     public void GameOver()
     {
         Managers.UI.PlayerLose();
     }
-
-    public void CheckBestScore()
-    {
-        if (bestScoreObject.bestScore == score)
-        {
-            bestScoreObject.bestScore = score;
-        }
-    }
-    
-    
 }

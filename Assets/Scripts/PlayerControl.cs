@@ -5,12 +5,13 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private float speed = 10f;
+    [SerializeField] private int healthPoint = 5;
     
-    private float speed = 10f;
-    private int healthPoint = 5;
-    private bool isUnbreakable = false;
+    [SerializeField] private bool isUnbreakable = false;
     private SpriteRenderer playerSprite;
 
+    // Set health and start coroutine
     private void Start()
     {
         playerSprite = GetComponent<SpriteRenderer>();
@@ -18,6 +19,7 @@ public class PlayerControl : MonoBehaviour
         StartCoroutine(InfiniteLoop());
     }
     
+    // Check touches and health
     private void Update()
     {
         if (Input.touchCount > 0)
@@ -41,10 +43,9 @@ public class PlayerControl : MonoBehaviour
         {
             Managers.GameProcess.GameOver();
         }
-
-        
     }
 
+    // Move to the left
     private void MoveLeft()
     {
         if (transform.position.x > -2.6f)
@@ -53,6 +54,7 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    // Move to the right
     private void MoveRight()
     {
         if (transform.position.x < 2.6f)
@@ -61,22 +63,26 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    private void bulletShoot()
+    // Instantiate a bullet
+    private void BulletShoot()
     {
         GameObject bullet = Instantiate(bulletPrefab,
             new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z), Quaternion.identity);
     }
     
+    // Shoot bullet every second
     private IEnumerator InfiniteLoop()
     {
         WaitForSeconds waitTime = new WaitForSeconds(1);
+        
         while (true)
         {
-            bulletShoot();
+            BulletShoot();
             yield return waitTime;
         }
     }
     
+    // Handle trigger event
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!isUnbreakable && healthPoint > 0)
@@ -89,13 +95,15 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    // Decrease health, update UI and become unbreakable 
     private void TakeDamage()
     {
         healthPoint--;
-        Managers.UI.ChangeHealth((healthPoint));
+        Managers.UI.ChangeHealth(healthPoint);
         StartCoroutine(BecomeUnbreakable());
     }
 
+    // Set isUnbreakable and make blink effect
     private IEnumerator BecomeUnbreakable()
     {
         if (!isUnbreakable)
@@ -112,5 +120,4 @@ public class PlayerControl : MonoBehaviour
             isUnbreakable = false;
         }
     }
-
 }

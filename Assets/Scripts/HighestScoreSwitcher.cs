@@ -7,6 +7,7 @@ public class HighestScoreSwitcher : MonoBehaviour
 {
     private BestScore _bestScore;
 
+    // Load and apply best score
     private void Start()
     {
         _bestScore = Resources.Load<BestScore>("ScriptableObjects/BestScoreData");

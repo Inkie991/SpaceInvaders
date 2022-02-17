@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour, IGameManager
     private AudioSource audioSource;
     public ManagerStatus Status { get; private set; }
     
+    // Add audio sources for sounds and music
     public void Startup()
     { 
         Debug.Log("Audio manager starting...");
@@ -34,7 +35,7 @@ public class AudioManager : MonoBehaviour, IGameManager
         Managers.Audio.MuteSound();
     }
 
-    // Mutes/Unmutes sound
+    // Mute/Unmute sound
     private void MuteSound()
     {
         musicSource.volume = musicSource.volume == 1f ? 0f : 1f;
